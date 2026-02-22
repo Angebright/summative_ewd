@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Risk Dashboard · NYC Mobility</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+</head>
+<body class="page page-dashboard">
+<header class="top-bar">
+<div class="top-bar-inner">
+<div class="logo-mark">Insurtech</div>
+<nav class="top-nav">
+<a href="index.html" class="top-link">Home</a>
+<span class="top-link active">Dashboard</span>
+<a href="drivers.html" class="top-link">Demo</a>
+</nav>
+</div>
+</header>
+<main class="dashboard-main">
+<section class="panel-row">
+<div class="panel kpi-panel">
+<div class="panel-header">
+<h2>Exposure Overview</h2>
+<span class="panel-tag">API /api/overview</span>
+</div>
+<div class="kpi-grid">
+<div class="kpi-card">
+<div class="kpi-label">Total Trips</div>
+<div class="kpi-value" id="kpi-total-trips">–</div>
+<div class="kpi-caption">Processed in current sample window</div>
+</div>
+<div class="kpi-card">
+<div class="kpi-label">High-Risk Zones</div>
+<div class="kpi-value" id="kpi-high-risk-zones">–</div>
+<div class="kpi-caption">Zones above risk threshold</div>
+</div>
+<div class="kpi-card">
+<div class="kpi-label">Peak Exposure Hour</div>
+<div class="kpi-value" id="kpi-peak-hour">–</div>
+<div class="kpi-caption">Local time, 24-hour clock</div>
+</div>
+<div class="kpi-card">
+<div class="kpi-label">Revenue Volatility Score</div>
+<div class="kpi-value" id="kpi-revenue-volatility">–</div>
+<div class="kpi-caption">Portfolio-level volatility proxy</div>
+</div>
+</div>
+</div>
+<div class="panel chart-panel density-panel">
+<div class="panel-header">
+<h2>Hourly Trip Density</h2>
+<span class="panel-tag">/api/map?hour=0..23</span>
+<span></span>
+</div>
+<div class="panel-body">
+<canvas id="densityChart"></canvas>
+<div class="panel-footnote">Sum of hourly trip count across all zones.</div>
+</div>
+</div>
+<div class="panel table-panel">
+<div class="panel-header">
+<h2>Top Risk Zones</h2>
+<span class="panel-tag">/api/top_zones?hour=H</span>
+</div>
+<div class="panel-body">
+<table class="data-table">
+<thead>
+<tr>
+<th>Zone</th>
+<th>Borough</th>
+<th>Risk Score</th>
+<th>Trip Count</th>
+<th>Exposure Score</th>
+</tr>
+</thead>
+<tbody id="topZonesBody">
+<tr>
+<td colspan="5">Waiting for data…</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+<div class="footer-inner">
+<span>Insurtech</span>
+<span>Group 7</span>
+</div>
+</footer>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="dashboard.js"></script>
+</body>
+</html>
